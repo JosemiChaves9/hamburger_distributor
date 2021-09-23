@@ -1,0 +1,26 @@
+.card {
+  border: 1px solid #000;
+  background-color: rgba(108, 133, 170, 0.329);
+  margin: 2rem;
+  height: auto;
+}
+
+.card {
+  h3 {
+    padding: 0.3rem 0;
+    text-align: center;
+  }
+}
+.card {
+  .hamburgerState {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #000;
+    background-color: rgb(86, 130, 197);
+    p {
+      padding: 0.2rem;
+      margin: auto 0;
+      margin-right: 3rem;
+    }
+  }
+}

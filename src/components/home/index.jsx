@@ -11,7 +11,7 @@ export const Home = () => {
         <button>Stop/Resume</button>
       </div>
       <div className={`${styles.ordersContainer}`}>
-        {workers.map((worker) => (
+        {workers.burgers.map((worker) => (
           <EmployeeCard
             name={worker.name}
             orders={worker.orders}

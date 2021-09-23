@@ -3,10 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import { Home } from './components/home';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { stepReducer } from './components/reducers';
-import './components/services/ordersGenerator';
-export const store = createStore(stepReducer);
+import { store } from './store/index';
 
 ReactDOM.render(
   <Provider store={store}>

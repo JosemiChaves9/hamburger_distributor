@@ -1,10 +1,10 @@
 import '../services/ordersGenerator';
-import { stepReducer, timerReducer } from '../reducers/index';
+import { burgerReducer, timerReducer } from '../reducers/index';
 import { combineReducers, createStore } from 'redux';
 
 export const store = createStore(
   combineReducers({
-    burgers: stepReducer,
+    burgers: burgerReducer,
     timer: timerReducer,
   })
 );

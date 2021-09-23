@@ -11,11 +11,12 @@ export const Home = () => {
         <button>Stop/Resume</button>
       </div>
       <div className={`${styles.ordersContainer}`}>
-        {workers.burgers.map((worker) => (
+        {workers.burgers.map((worker, idx) => (
           <EmployeeCard
             name={worker.name}
             orders={worker.orders}
             key={worker.name}
+            idx={idx}
           />
         ))}
       </div>

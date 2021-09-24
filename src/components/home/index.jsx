@@ -6,6 +6,7 @@ import { orderGenerator } from '../../services/ordersGenerator';
 
 export const Home = () => {
   const { workers, secondsBetweenOrders } = useSelector((store) => store);
+  const [counter, setCounter] = useState(secondsBetweenOrders);
   const [intervalId, setIntervalId] = useState();
   const [generatingOrders, setGeneratingOrders] = useState(false);
 
@@ -20,7 +21,7 @@ export const Home = () => {
   return (
     <>
       <div className={`${styles.actionsContainer}`}>
-        Next burger in: "counter"
+        Next burger in: {counter}
         <button
           className={
             generatingOrders ? `${styles.stopped}` : `${styles.activated}`

@@ -13,16 +13,15 @@ export const burgerReducer = createReducer(listOfWorkers, (builder) => {
 
   builder.addCase(nextStep.type, (state, action) => {
     const order = state[action.payload.idx].orders.find(
-      (id) => action.payload.id
+      () => action.payload.id
     );
-
     order.step++;
     return state;
   });
 
   builder.addCase(finishBurger.type, (state, action) => {
     const worker = state[action.payload.idx];
-    const order = worker.orders.find((id) => action.payload.id);
+    const order = worker.orders.find(() => action.payload.id);
     const indexOfOrder = worker.orders.indexOf(order);
     worker.orders.splice(indexOfOrder, 1);
     return state;
@@ -30,7 +29,6 @@ export const burgerReducer = createReducer(listOfWorkers, (builder) => {
 });
 
 const findWorkerWithLessCharge = (listOfWorkers) => {
-  console.log(current(listOfWorkers));
   let workerWithlessCharge = {
     idx: 0,
     charge: 10,

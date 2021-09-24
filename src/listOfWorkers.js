@@ -33,5 +33,5 @@ export const listOfWorkers = {
       orders: [],
     },
   ],
-  secondsBetweenOrders: 2,
+  secondsBetweenOrders: 6,
 };

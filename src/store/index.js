@@ -1,11 +1,8 @@
 import '../services/ordersGenerator';
-import { burgerReducer, timerReducer } from '../reducers/index';
-import { combineReducers, createStore } from 'redux';
+import { burgerReducer } from '../reducers/index';
+import { createStore } from 'redux';
 
 export const store = createStore(
-  combineReducers({
-    burgers: burgerReducer,
-    timer: timerReducer,
-  }),
+  burgerReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );

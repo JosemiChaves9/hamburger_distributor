@@ -33,5 +33,5 @@ export const listOfWorkers = {
       orders: [],
     },
   ],
-  counter: 6000,
+  secondsBetweenOrders: 2,
 };

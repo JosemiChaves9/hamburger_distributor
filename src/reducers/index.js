@@ -1,16 +1,11 @@
 import { createReducer, current } from '@reduxjs/toolkit';
 import { listOfWorkers } from '../listOfWorkers';
-import {
-  finishBurger,
-  newOrder,
-  nextStep,
-  startStopTimer,
-} from '../actions/index';
+import { finishBurger, newOrder, nextStep } from '../actions/index';
 
-export const burgerReducer = createReducer(listOfWorkers.workers, (builder) => {
+export const burgerReducer = createReducer(listOfWorkers, (builder) => {
   builder.addCase(newOrder.type, (state, action) => {
-    state[findWorkerWithLessCharge(state)].orders = [
-      ...state[findWorkerWithLessCharge(state)].orders,
+    state.workers[findWorkerWithLessCharge(state.workers)].orders = [
+      ...state.workers[findWorkerWithLessCharge(state.workers)].orders,
       action.payload,
     ];
     return state;
@@ -34,14 +29,8 @@ export const burgerReducer = createReducer(listOfWorkers.workers, (builder) => {
   });
 });
 
-export const timerReducer = createReducer(false, (builder) => {
-  builder.addCase(startStopTimer.type, (state) => {
-    state = !state;
-    return state;
-  });
-});
-
 const findWorkerWithLessCharge = (listOfWorkers) => {
+  console.log(current(listOfWorkers));
   let workerWithlessCharge = {
     idx: 0,
     charge: 10,

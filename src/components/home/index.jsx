@@ -5,19 +5,17 @@ import { useEffect, useState } from 'react';
 import { orderGenerator } from '../../services/ordersGenerator';
 
 export const Home = () => {
-  const workers = useSelector((store) => store);
-  const [timer, setTimer] = useState(false);
+  const { workers, secondsBetweenOrders } = useSelector((store) => store);
   const [intervalId, setIntervalId] = useState();
   const [generatingOrders, setGeneratingOrders] = useState(false);
 
   useEffect(() => {
-    console.log(generatingOrders);
     if (generatingOrders) {
-      setIntervalId(orderGenerator.startGeneratingOrders());
+      setIntervalId(orderGenerator.startGeneratingOrders(secondsBetweenOrders));
     } else {
       orderGenerator.stopGeneratingOrders(intervalId);
     }
-  }, [generatingOrders]);
+  }, [generatingOrders, secondsBetweenOrders]);
 
   return (
     <>
@@ -32,7 +30,7 @@ export const Home = () => {
         </button>
       </div>
       <div className={`${styles.ordersContainer}`}>
-        {workers.burgers.map((worker, idx) => (
+        {workers.map((worker, idx) => (
           <EmployeeCard
             name={worker.name}
             orders={worker.orders}

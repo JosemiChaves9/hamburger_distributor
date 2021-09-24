@@ -15,14 +15,13 @@ export class orderGenerator {
     };
   }
 
-  static startGeneratingOrders() {
+  static startGeneratingOrders(secondsBetweenOrders) {
     return setInterval(() => {
       store.dispatch(this.generateNew());
-    }, 6000);
+    }, secondsBetweenOrders * 1000);
   }
 
   static stopGeneratingOrders(intervalId) {
-    console.log(intervalId);
     clearInterval(intervalId);
   }
 }

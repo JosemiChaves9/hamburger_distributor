@@ -15,7 +15,7 @@ export const Home = () => {
       setIntervalId(orderGenerator.startGeneratingOrders(secondsBetweenOrders));
     } else {
       orderGenerator.stopGeneratingOrders(intervalId);
-    }
+    } //eslint-disable-next-line
   }, [generatingOrders, secondsBetweenOrders]);
 
   return (

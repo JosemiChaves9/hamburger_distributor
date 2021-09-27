@@ -1,4 +1,4 @@
-import { createReducer, current } from '@reduxjs/toolkit';
+import { createReducer } from '@reduxjs/toolkit';
 import { listOfWorkers } from '../listOfWorkers';
 import { finishBurger, newOrder, nextStep } from '../actions/index';
 
@@ -12,7 +12,7 @@ export const burgerReducer = createReducer(listOfWorkers, (builder) => {
   });
 
   builder.addCase(nextStep.type, (state, action) => {
-    const order = state[action.payload.idx].orders.find(
+    const order = state.workers[action.payload.idx].orders.find(
       () => action.payload.id
     );
     order.step++;
@@ -20,7 +20,7 @@ export const burgerReducer = createReducer(listOfWorkers, (builder) => {
   });
 
   builder.addCase(finishBurger.type, (state, action) => {
-    const worker = state[action.payload.idx];
+    const worker = state.workers[action.payload.idx];
     const order = worker.orders.find(() => action.payload.id);
     const indexOfOrder = worker.orders.indexOf(order);
     worker.orders.splice(indexOfOrder, 1);
